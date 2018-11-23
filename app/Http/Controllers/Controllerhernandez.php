@@ -7,7 +7,7 @@ use App\Product;
 class Controllerhernandez extends Controller
 {
     public function welcom(){
-    	$products= Product::all();
+    	$products= Product::paginate(8);
     	return view('welcome')->with(compact('products'));
     }
 }

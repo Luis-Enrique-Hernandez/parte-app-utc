@@ -7,8 +7,13 @@ Route::get('/', 'Controllerhernandez@welcom');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products/{id}', 'ProductControllerhernandez@show');//formulario edicion
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+Route::Post('/cart', 'CartDetailControllerhernandez@store');//formulario edicion
+Route::delete('/cart', 'CartDetailControllerhernandez@destroy');
+Route::Post('/order', 'CartControllerhernandez@update');
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
 
 	Route::get('/products', 'ProductControllerhernandez@index');  //listar
 Route::get('/products/create', 'ProductControllerhernandez@create'); //formulario
