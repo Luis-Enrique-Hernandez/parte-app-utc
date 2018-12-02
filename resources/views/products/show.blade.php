@@ -20,7 +20,7 @@
 
             <div class="name">
                 <h3 class="title">{{$productHm->name}}</h3>
-                <h6>{{$productHm->category->name}}</h6>
+                <h6>{{$productHm->category_name}}</h6>
             </div>
                     @if (session('notification'))
                                 <div class="alert alert-success">
@@ -33,11 +33,20 @@
         <p>{{$productHm->long_description}} </p>
     </div>
 
+    
     <div class="text-center">
+        @if (auth()->check())
     <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddToCart">
         <i class="material-icons">add</i> Añadir a carrito de compras
     </button>
+
+    @else
+    <a href="{{url('/login?redirect_to='.url()->current())}}" class="btn btn-primary btn-round">
+        <i class="material-icons">add</i> Añadir a carrito de compras
+    </a>
+    @endif
     </div>
+    
 
    
 

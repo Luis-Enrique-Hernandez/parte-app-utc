@@ -28,22 +28,42 @@
     <form method="post" action="{{ url('/admin/products/'.$productedit->id.'/edit')}}">
         {{ csrf_field() }}
 
-        
+        <div class="row">
+            <div class="col-sm-6">
             <div class="form-group label-floating">
                 <label class="control-label">Nombre del producto</label>
                 <input type="text" name="name" class="form-control" value="{{ old('name', $productedit->name) }}">
             </div>
-
+        </div>
+        <div class="col-sm-6">
             <div class="form-group label-floating">
                 <label class="control-label">Precio</label>
                 <input type="number" step="0.01" name="price" class="form-control" value="{{ old('price', $productedit->price) }}">
-            </div>       
+            </div> 
+            </div> 
+            </div>     
 
-       
+       <div class="row">
+            <div class="col-sm-6">
             <div class="form-group label-floating">
                 <label class="control-label">Descripcion corta</label>
                 <input type="text" name="description" class="form-control" value="{{ old('description', $productedit->description) }}">
             </div>
+            </div>
+            <div class="col-sm-6">       
+            <div class="form-group label-floating">
+                <label class="control-label">Categoria</label>
+                <select name="category_id" id="" class="form-control">
+                    <option value="0">General</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}" @if($category->id == old('category_id', $productedit->category_id)) selected @endif>
+                        {{$category->name}}
+                    </option>
+                    @endforeach
+                </select>
+            </div> 
+            </div>            
+        </div>
             
        
 

@@ -6,6 +6,17 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
             <div class="card card-signup">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        
+                    </div>
+                @endif
                 <form class="form" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
                     <div class="header header-primary text-center">
@@ -29,14 +40,35 @@
                             <span class="input-group-addon">
                                 <i class="material-icons">face</i>
                             </span>
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus placeholder="Nombres...">
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $name) }}" required autofocus placeholder="Nombres...">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">perm_identity</i>
+                            </span>
+                            <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required placeholder="Username...">
                         </div>
 
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="material-icons">email</i>
                             </span>
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="Correo electronico...">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $email) }}"  placeholder="Correo electronico...">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">phone</i>
+                            </span>
+                            <input id="phone" type="phone" class="form-control" name="phone" value="{{ old('phone') }}" required placeholder="Telefono...">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">room</i>
+                            </span>
+                            <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required placeholder="Direccion...">
                         </div>
 
                         <div class="input-group">

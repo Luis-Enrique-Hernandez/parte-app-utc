@@ -32,9 +32,8 @@ class ImagesControllerhernandez extends Controller
 	    	//$productImage->featured=false;
 	    	$productImage->product_id=$id;
 	    	$productImage->save();  //inserta
-	    	return back();// una ves inserta lo devuelve a la pagina principal
     	}
-    	
+            return back();// una ves inserta lo devuelve a la pagina principal
     	
     }
     public function destroy(Request $request, $id)

@@ -1,15 +1,22 @@
 <?php
-
+ 
 
 
 Route::get('/', 'Controllerhernandez@welcom');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/products/{id}', 'ProductControllerhernandez@show');//formulario edicion
+Route::get('/search', 'SearchControllerhernandez@show');
+Route::get('/products/json', 'SearchControllerhernandez@data');
 
-Route::Post('/cart', 'CartDetailControllerhernandez@store');//formulario edicion
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products/{id}', 'ProductControllerhernandez@show');
+Route::get('/categories/{category}', 'CategoryControllerhernandez@show');
+
+
+
+
+Route::Post('/cart', 'CartDetailControllerhernandez@store');
 Route::delete('/cart', 'CartDetailControllerhernandez@destroy');
 Route::Post('/order', 'CartControllerhernandez@update');
 
@@ -29,6 +36,16 @@ Route::Post('/products/{id}/images', 'ImagesControllerhernandez@store'); //regis
 Route::delete('/products/{id}/images', 'ImagesControllerhernandez@destroy');//formulario eliminar
 
 Route::get('/products/{id}/images/select/{image}', 'ImagesControllerhernandez@select');  //Destacar una imagen
+
+
+
+	Route::get('/categories', 'CategoryControllerhernandez@index');  //listar
+Route::get('/categories/create', 'CategoryControllerhernandez@create'); //formulario
+Route::Post('/categories', 'CategoryControllerhernandez@store'); //registrar
+Route::get('/categories/{categoryedit}/edit', 'CategoryControllerhernandez@edit');//formulario edicion
+Route::Post('/categories/{categoryedit}/edit', 'CategoryControllerhernandez@update'); //actualizar
+Route::delete('/categories/{categorydelete}', 'CategoryControllerhernandez@destroy');//formulario eliminar
+
     
 });
 
